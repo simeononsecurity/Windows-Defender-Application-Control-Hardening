@@ -33,7 +33,7 @@ Update the following line in the script to use the policy that you desire:
 Set-RuleOption -FilePath "C:\temp\Windows Defender\WDAC_V1_Recommended_Enforced.xml" -Option 0
 ```
 
-Alternatively, you may use [Group Policy to enforce the WDAC policies](Deploy Windows Defender Application Control policies by using Group Policy).
+Alternatively, you may use [Group Policy to enforce the WDAC policies](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/deploy-windows-defender-application-control-policies-using-group-policy).
 
 ## How to run the script:
 ### Manual Install:
