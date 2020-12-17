@@ -10,13 +10,13 @@
 - [Microsoft - Windows Defender Application Control](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/windows-defender-application-control-design-guide)
 
 ## Explanation:
-- Default Policies:
+- **Default Policies:**
     - The "Default" policies use only the default features available in the WDAC-Toolkit.
-- Recommened Policies:
+- **Recommended Policies:**
     - The "Recommended" policies use the default features as well as Microsoft's recommended [blocks](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-block-rules) and [driver block](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-driver-block-rules) rules.
-- Audit Policies:
+- **Audit Policies:**
     - The "Audit" policies, just log exceptions to the rules. This is for testing in your environment, so that you may modify the policies, at will, to fit your environments needs.
-- Enforced Policies:
+- **Enforced Policies:**
     - The "Enforced" policies will not allow any exceptions to the rules, applications, drivers, dlls, etc. will be blocked if they do not comply.
 
 ### There are four policy files available:
