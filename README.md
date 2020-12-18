@@ -44,7 +44,7 @@ You can view the WDAC event logs under **Applications and Services Logs\Microsof
 ## How to run the script:
 ### Manual Install:
 If manually downloaded, the script must be launched from an administrative powershell in the directory containing all the files from the [GitHub Repository](https://github.com/simeononsecurity/Windows-Defender-Application-Control-Hardening/archive/main.zip)
-```powershell
+```ps
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
 Get-ChildItem -Recurse *.ps1 | Unblock-File
 .\sos-wdachardening.ps1
