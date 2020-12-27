@@ -39,7 +39,7 @@ Alternatively, you may use [Group Policy to enforce the WDAC policies](https://d
 
 You can view the WDAC event logs in event viewer under:
 
-```Applications and Services Logs\Microsoft\Windows\CodeIntegrity\Operational```.
+```Applications and Services Logs\Microsoft\Windows\CodeIntegrity\Operational```
 
 ### Recommended Reading:
 - [Microsoft - Audit Windows Defender Application Control Policies](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/audit-windows-defender-application-control-policies)
