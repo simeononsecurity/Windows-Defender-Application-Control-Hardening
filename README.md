@@ -36,10 +36,11 @@ Set-RuleOption -FilePath "C:\temp\Windows Defender\WDAC_V1_Recommended_Enforced.
 Alternatively, you may use [Group Policy to enforce the WDAC policies](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/deploy-windows-defender-application-control-policies-using-group-policy).
 
 ### Auditing:
-- Recommended Reading:
- - [Microsoft - Audit Windows Defender Application Control Policies](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/audit-windows-defender-application-control-policies)
- 
+
 You can view the WDAC event logs under **Applications and Services Logs\Microsoft\Windows\CodeIntegrity\Operational**.
+
+### Recommended Reading:
+- [Microsoft - Audit Windows Defender Application Control Policies](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/audit-windows-defender-application-control-policies)
 
 ## How to run the script:
 ### Manual Install:
