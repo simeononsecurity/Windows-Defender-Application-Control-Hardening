@@ -12,6 +12,10 @@ ForEach ($PolicyNumber in (1..10)) {
     Set-RuleOption -FilePath $PolicyPath -Option $PolicyNumber
 }
 
+#Enable the necessary services to allow WDAC to use the ISG correctly on the client
+#https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/use-windows-defender-application-control-with-intelligent-security-graph#enable-the-necessary-services-to-allow-wdac-to-use-the-isg-correctly-on-the-client
+appidtel start
+
 Add-Type -AssemblyName PresentationFramework
 $Answer = [System.Windows.MessageBox]::Show("Reboot to make changes effective?", "Restart Computer", "YesNo", "Question")
 Switch ($Answer) {
