@@ -1,6 +1,12 @@
 #Require elivation for script run
 #Requires -RunAsAdministrator
 
+#Continue on error
+$ErrorActionPreference = 'silentlycontinue'
+
+#Set Directory to PSScriptRoot
+if ((Get-Location).Path -NE $PSScriptRoot) { Set-Location $PSScriptRoot }
+
 #Windows Defender Configuration Files
 New-Item -Path "C:\" -Name "Temp" -ItemType "directory" -Force | Out-Null; New-Item -Path "C:\temp\" -Name "Windows Defender" -ItemType "directory" -Force | Out-Null; Copy-Item -Path .\Files\XML\* -Destination "C:\temp\Windows Defender\" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 
