@@ -62,9 +62,9 @@ Harden Windows with Windows Defender Application Control (WDAC)
 Update the following line in the script to use the policy that you desire locally:
 
 ```powershell
-$PolicyPath = "C:\temp\Windows Defender\WDAC_V1_Recommended_Enforced.bin"
+$PolicyPath = "C:\temp\Windows Defender\CIP\WDAC_V1_Recommended_Enforced\*.cip"
 #https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/deployment/deploy-wdac-policies-with-script
-ForEach ($Policy in $PolicyPath) {
+ForEach ($Policy in (Get-ChildItem -Recurse $PolicyPath).Fullname) {
   $PolicyBinary = "$Policy"
   $DestinationFolder = $env:windir+"\System32\CodeIntegrity\CIPolicies\Active\"
   $RefreshPolicyTool = "./Files/EXECUTABLES/RefreshPolicy(AMD64).exe"
