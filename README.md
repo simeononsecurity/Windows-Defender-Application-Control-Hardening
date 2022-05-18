@@ -2,6 +2,11 @@
 
 Harden Windows with Windows Defender Application Control (WDAC)
 
+## Notes:
+- Windows Server 2016/2019 or anything before version 1903 only support a single legacy policy at a time.
+- Windows Server Core edition supports WDAC but some components that depend on AppLocker won’t work
+- Please read the [Recommended Reading](https://github.com/simeononsecurity/Windows-Defender-Application-Control-Hardening#recommended-reading) before implementing or even testing.
+
 ## A list of scripts and tools this collection utilizes:
 
 - [MicrosoftDocs - WDAC-Toolkit](https://github.com/MicrosoftDocs/WDAC-Toolkit)
