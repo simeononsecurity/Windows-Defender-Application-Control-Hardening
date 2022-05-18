@@ -18,7 +18,7 @@ New-Item -Path "C:\" -Name "Temp" -ItemType "directory" -Force | Out-Null; New-I
 #     Set-RuleOption -FilePath $PolicyPath -Option $PolicyNumber
 # }
 
-$PolicyPath = "C:\temp\Windows Defender\CIP\WDAC_V1_Recommended_Enforced\*.cip"
+$PolicyPath = "C:\temp\Windows Defender\CIP\WDAC_V1_Recommended_Audit\*.cip"
 #https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/deployment/deploy-wdac-policies-with-script
 ForEach ($Policy in (Get-ChildItem -Recurse $PolicyPath).Fullname) {
   $PolicyBinary = "$Policy"
@@ -31,6 +31,10 @@ ForEach ($Policy in (Get-ChildItem -Recurse $PolicyPath).Fullname) {
 #Enable the necessary services to allow WDAC to use the ISG correctly on the client
 #https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/use-windows-defender-application-control-with-intelligent-security-graph#enable-the-necessary-services-to-allow-wdac-to-use-the-isg-correctly-on-the-client
 appidtel start
+
+#Enable Intelligent Security Graph (ISG) and Managed Installer (MI) diagnostic events 3090, 3091, 3092 for troubleshooting and logging
+#reg add HKLM\SYSTEM\CurrentControlSet\Control\CI -v TestFlags -t REG_DWORD -d 0x100
+reg add HKLM\SYSTEM\CurrentControlSet\Control\CI -v TestFlags -t REG_DWORD -d 0x300
 
 Add-Type -AssemblyName PresentationFramework
 $Answer = [System.Windows.MessageBox]::Show("Reboot to make changes effective?", "Restart Computer", "YesNo", "Question")
