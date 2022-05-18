@@ -12,7 +12,7 @@ New-Item -Path "C:\" -Name "Temp" -ItemType "directory" -Force | Out-Null; New-I
 
 #Enable Windows Defender Application Control
 #https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/select-types-of-rules-to-create
-$PolicyPath = "C:\temp\Windows Defender\WDAC_V1_Recommended_Enforced.xml"
+$PolicyPath = "C:\temp\Windows Defender\WDAC_V1_Recommended_Enforced*.xml"
 ForEach ($PolicyNumber in (1..10)) {
     Write-Host "Importing WDAC Policy Option $PolicyNumber"
     Set-RuleOption -FilePath $PolicyPath -Option $PolicyNumber
