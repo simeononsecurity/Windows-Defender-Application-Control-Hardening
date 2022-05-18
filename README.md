@@ -22,7 +22,7 @@ Harden Windows with Windows Defender Application Control (WDAC)
 
 ### XML vs. BIN:
 
-- Simply put, the **"XML"** policies are for applying to a machine locally and the **"BIN"** files are for enforcing them with either [Group Policy](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/deploy-windows-defender-application-control-policies-using-group-policy) or [Microsoft Intune](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/deploy-windows-defender-application-control-policies-using-intune).
+- Simply put, the **"XML"** policies are for applying to a machine locally and the **"BIN"** files are for enforcing them with either [Group Policy](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/deploy-windows-defender-application-control-policies-using-group-policy) or [Microsoft Intune](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/deploy-windows-defender-application-control-policies-using-intune). While you can use XML, BIN, or CIP policies in a local deployment, generally speaking you should stick to XML where possible and especially so while auditing or troubleshooting.
 
 ### Policy Descriptions:
 
@@ -62,10 +62,14 @@ Harden Windows with Windows Defender Application Control (WDAC)
 Update the following line in the script to use the policy that you desire locally:
 
 ```powershell
-$PolicyPath = "C:\temp\Windows Defender\WDAC_V1_Recommended_Enforced.xml"
-ForEach ($PolicyNumber in (1..10)) {
-    Write-Host "Importing WDAC Policy Option $PolicyNumber"
-    Set-RuleOption -FilePath $PolicyPath -Option $PolicyNumber
+$PolicyPath = "C:\temp\Windows Defender\WDAC_V1_Recommended_Enforced.bin"
+#https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/deployment/deploy-wdac-policies-with-script
+ForEach ($Policy in $PolicyPath) {
+  $PolicyBinary = "$Policy"
+  $DestinationFolder = $env:windir+"\System32\CodeIntegrity\CIPolicies\Active\"
+  $RefreshPolicyTool = "./Files/EXECUTABLES/RefreshPolicy(AMD64).exe"
+  Copy-Item -Path $PolicyBinary -Destination $DestinationFolder -Force
+  & $RefreshPolicyTool
 }
 ```
 
