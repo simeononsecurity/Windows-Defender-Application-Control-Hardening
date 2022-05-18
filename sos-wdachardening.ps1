@@ -8,14 +8,24 @@ $ErrorActionPreference = 'silentlycontinue'
 if ((Get-Location).Path -NE $PSScriptRoot) { Set-Location $PSScriptRoot }
 
 #Windows Defender Configuration Files
-New-Item -Path "C:\" -Name "Temp" -ItemType "directory" -Force | Out-Null; New-Item -Path "C:\temp\" -Name "Windows Defender" -ItemType "directory" -Force | Out-Null; Copy-Item -Path .\Files\XML\* -Destination "C:\temp\Windows Defender\" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
+New-Item -Path "C:\" -Name "Temp" -ItemType "directory" -Force | Out-Null; New-Item -Path "C:\temp\" -Name "Windows Defender" -ItemType "directory" -Force | Out-Null; Copy-Item -Path .\Files\XML\* -Destination "C:\temp\Windows Defender\" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null; Copy-Item -Path .\Files\BIN\ -Destination "C:\temp\Windows Defender\" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null; Copy-Item -Path .\Files\CIP\ -Destination "C:\temp\Windows Defender\" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 
 #Enable Windows Defender Application Control
 #https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/select-types-of-rules-to-create
-$PolicyPath = "C:\temp\Windows Defender\WDAC_V1_Recommended_Enforced*.xml"
-ForEach ($PolicyNumber in (1..10)) {
-    Write-Host "Importing WDAC Policy Option $PolicyNumber"
-    Set-RuleOption -FilePath $PolicyPath -Option $PolicyNumber
+# $PolicyPath = "C:\temp\Windows Defender\WDAC_V1_Recommended_Enforced*.xml"
+# ForEach ($PolicyNumber in (1..10)) {
+#     Write-Host "Importing WDAC Policy Option $PolicyNumber"
+#     Set-RuleOption -FilePath $PolicyPath -Option $PolicyNumber
+# }
+
+$PolicyPath = "C:\temp\Windows Defender\WDAC_V1_Recommended_Enforced.bin"
+#https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/deployment/deploy-wdac-policies-with-script
+ForEach ($Policy in $PolicyPath) {
+  $PolicyBinary = "$Policy"
+  $DestinationFolder = $env:windir+"\System32\CodeIntegrity\CIPolicies\Active\"
+  $RefreshPolicyTool = "./Files/EXECUTABLES/RefreshPolicy(AMD64).exe"
+  Copy-Item -Path $PolicyBinary -Destination $DestinationFolder -Force
+  & $RefreshPolicyTool
 }
 
 #Enable the necessary services to allow WDAC to use the ISG correctly on the client
