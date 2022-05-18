@@ -39,18 +39,18 @@ Harden Windows with Windows Defender Application Control (WDAC)
 
 - **XML:**
   - **Audit Only:**
-    - `WDAC_V1_Default_Audit_{version}.xml`
-    - `WDAC_V1_Recommended_Audit_{version}.xml`
+    - `WDAC_V1_Default_Audit.xml`
+    - `WDAC_V1_Recommended_Audit.xml`
   - **Enforced:**
-    - `WDAC_V1_Default_Enforced_{version}.xml`
-    - `WDAC_V1_Recommended_Enforced_{version}.xml`
+    - `WDAC_V1_Default_Enforced.xml`
+    - `WDAC_V1_Recommended_Enforced.xml`
 - **BIN:**
   - **Audit Only:**
-    - `WDAC_V1_Default_Audit_{version}.bin`
-    - `WDAC_V1_Recommended_Audit_{version}.bin`
+    - `WDAC_V1_Default_Audit.bin`
+    - `WDAC_V1_Recommended_Audit.bin`
   - **Enforced:**
-    - `WDAC_V1_Default_Enforced_{version}.bin`
-    - `WDAC_V1_Recommended_Enforced_{version}.bin`
+    - `WDAC_V1_Default_Enforced.bin`
+    - `WDAC_V1_Recommended_Enforced.bin`
 - **CIP:**
   - **Audit Only:**
     - `WDAC_V1_Default_Audit\{uid}.cip`
