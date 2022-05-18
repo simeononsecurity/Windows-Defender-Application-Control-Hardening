@@ -5,6 +5,7 @@ Harden Windows with Windows Defender Application Control (WDAC)
 ## A list of scripts and tools this collection utilizes:
 
 - [MicrosoftDocs - WDAC-Toolkit](https://github.com/MicrosoftDocs/WDAC-Toolkit)
+- [Microsoft - Refresh CI Policy ](https://www.microsoft.com/en-us/download/details.aspx?id=102925)
 
 ## Additional configurations were considered from:
 
