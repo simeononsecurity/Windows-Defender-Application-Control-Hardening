@@ -18,9 +18,9 @@ New-Item -Path "C:\" -Name "Temp" -ItemType "directory" -Force | Out-Null; New-I
 #     Set-RuleOption -FilePath $PolicyPath -Option $PolicyNumber
 # }
 
-$PolicyPath = "C:\temp\Windows Defender\WDAC_V1_Recommended_Enforced.bin"
+$PolicyPath = "C:\temp\Windows Defender\CIP\WDAC_V1_Recommended_Enforced\*.cip"
 #https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/deployment/deploy-wdac-policies-with-script
-ForEach ($Policy in $PolicyPath) {
+ForEach ($Policy in (Get-ChildItem -Recurse $PolicyPath).Fullname) {
   $PolicyBinary = "$Policy"
   $DestinationFolder = $env:windir+"\System32\CodeIntegrity\CIPolicies\Active\"
   $RefreshPolicyTool = "./Files/EXECUTABLES/RefreshPolicy(AMD64).exe"
