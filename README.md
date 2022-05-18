@@ -39,18 +39,25 @@ Harden Windows with Windows Defender Application Control (WDAC)
 
 - **XML:**
   - **Audit Only:**
-    - `WDAC_V1_Default_Audit.xml`
-    - `WDAC_V1_Recommended_Audit.xml`
+    - `WDAC_V1_Default_Audit_{version}.xml`
+    - `WDAC_V1_Recommended_Audit_{version}.xml`
   - **Enforced:**
-    - `WDAC_V1_Default_Enforced.xml`
-    - `WDAC_V1_Recommended_Enforced.xml`
+    - `WDAC_V1_Default_Enforced_{version}.xml`
+    - `WDAC_V1_Recommended_Enforced_{version}.xml`
 - **BIN:**
   - **Audit Only:**
-    - `WDAC_V1_Default_Audit.bin`
-    - `WDAC_V1_Recommended_Audit.bin`
+    - `WDAC_V1_Default_Audit_{version}.bin`
+    - `WDAC_V1_Recommended_Audit_{version}.bin`
   - **Enforced:**
-    - `WDAC_V1_Default_Enforced.bin`
-    - `WDAC_V1_Recommended_Enforced.bin`
+    - `WDAC_V1_Default_Enforced_{version}.bin`
+    - `WDAC_V1_Recommended_Enforced_{version}.bin`
+- **CIP:**
+  - **Audit Only:**
+    - `WDAC_V1_Default_Audit\{uid}.cip`
+    - `WDAC_V1_Recommended_Audit\{uid}.cip`
+  - **Enforced:**
+    - `WDAC_V1_Default_Enforced\{uid}.cip`
+    - `WDAC_V1_Recommended_Enforced\{uid}.cip`
 
 Update the following line in the script to use the policy that you desire locally:
 
