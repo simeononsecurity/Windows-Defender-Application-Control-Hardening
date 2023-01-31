@@ -1,6 +1,6 @@
 # Windows-Defender-Application-Control-Hardening
 
-Harden Windows with Windows Defender Application Control (WDAC)
+This is a PowerShell script that configures Windows Defender Application Control (WDAC) on a Windows machine. The script requires elevated privileges to run and continues even if errors are encountered. It creates a new "Temp" directory in the C:\ drive and copies necessary Windows Defender configuration files to it. The script then enables WDAC by importing policies and adding necessary services. The script also enables the Intelligent Security Graph (ISG) and Managed Installer (MI) diagnostic events for troubleshooting. The script ends with a prompt to the user to restart the computer to make changes effective.
 
 ## Notes:
 - Windows Server 2016/2019 or anything before version 1903 only support a single legacy policy at a time.
